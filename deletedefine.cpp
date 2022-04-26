@@ -34,28 +34,26 @@ void DeleteDefine::on_pushButton_clicked()
 
        QFile file(path);
      if (file.open(QIODevice::ReadWrite | QIODevice::Text)) {
-         qDebug() << "FILE OPENED";
+
          QTextStream stream (&file);
          QRegularExpression startline  (".*#define\\s*");
          QRegularExpression  endline ("\\s*.*");
          QRegularExpression regex (startline.pattern() + name + endline.pattern());
-
+         QString s;
          while(!stream.atEnd()){
-         QString line =stream.readLine();
-         QRegularExpressionMatch regexMatcher = regex.match(line);
-         if(regexMatcher.hasMatch())
-         qDebug() << line;
-         line.clear();
 
-         }
-
-         /*else{
-            QMessageBox::information(this,"Error","error deleting define" );
-         }*/
+             QString line =stream.readLine();
+             QRegularExpressionMatch regexMatcher = regex.match(line);
+             if(!regexMatcher.hasMatch())
+                 s.append(line + "\n");
+          }
+          file.resize(0);
+          stream << s;
+          file.close();
 
      }
 
-       file.close();
+
        CDefineList obj;
        obj.setDefineList(path);
 
