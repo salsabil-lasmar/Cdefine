@@ -11,8 +11,9 @@
 #include<QRegularExpressionMatch>
 #include<QMessageBox>
 #include<QDebug>
-EditDefine::EditDefine(QWidget *parent) :
+EditDefine::EditDefine(QWidget *parent , Ui::MainWindow *Win) :
     QDialog(parent),
+    ui_Win(Win)
     ui(new Ui::EditDefine)
 {
     ui->setupUi(this);
@@ -31,10 +32,8 @@ void EditDefine::on_pushButton_clicked()
         int row=ui->lineEdit->text().toInt();
         QString NewDefineName=ui->lineEdit_2->text();
 
-       // QString oldname= ui->tableView->model()->data(ui->tableView->model()->index(row,1)).toString();;
-        //QString path= ui->tableView->model()->data(ui->tableView->model()->index(row,3)).toString();;
-        QString  oldname = ui->lineEdit_name->text();
-        QString  path = ui->lineEdit_path->text();
+        QString oldname= ui_Win->tableView->model()->data(ui_Win->tableView->model()->index(row,1)).toString();;
+        QString path= ui_Win->tableView->model()->data(ui_Win->tableView->model()->index(row,3)).toString();;
 
         QFile file(path);
           if (file.open(QIODevice::ReadWrite | QIODevice::Text)) {
