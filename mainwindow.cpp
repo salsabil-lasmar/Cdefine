@@ -51,14 +51,14 @@ void MainWindow::on_Add_pushButton_clicked()
 
 void MainWindow::on_Delete_pushButton_clicked()
 {
-    DeleteDefine* deletedefine=new  DeleteDefine();
+    DeleteDefine* deletedefine=new  DeleteDefine(nullptr , ui);
     deletedefine->show();
 }
 
 
 void MainWindow::on_Edit_pushButton_clicked()
 {
-    EditDefine* editDefine=new EditDefine();
+    EditDefine* editDefine=new EditDefine(nullptr , ui);
     editDefine->show();
 
 }
