@@ -46,8 +46,7 @@ void EditDefine::on_pushButton_clicked()
                   }
                   newfile.close();
        }
-                   /* else
-                       QMessageBox::information(this,"Error","error editing define" );*/
+                  
       file.close();
       CDefineList obj;
       obj.setDefineList(path);
