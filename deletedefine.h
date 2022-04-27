@@ -12,13 +12,14 @@ class DeleteDefine : public QDialog
     Q_OBJECT
 
 public:
-    explicit DeleteDefine(QWidget *parent = nullptr);
+    explicit DeleteDefine(QWidget *parent = nullptr , Ui::MainWindow *Win = nullptr);
     ~DeleteDefine();
 
 private slots:
     void on_pushButton_clicked();
 
 private:
+    Ui::MainWindow *ui_Win;
     Ui::DeleteDefine *ui;
 };
 
