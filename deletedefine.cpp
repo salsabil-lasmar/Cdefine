@@ -11,8 +11,9 @@
 #include<QRegularExpressionMatch>
 #include<QMessageBox>
 #include<QDebug>
-DeleteDefine::DeleteDefine(QWidget *parent) :
+DeleteDefine::DeleteDefine(QWidget *parent , Ui::MainWindow *Win) :
     QDialog(parent),
+    ui_Win (Win),
     ui(new Ui::DeleteDefine)
 {
     ui->setupUi(this);
@@ -27,10 +28,9 @@ DeleteDefine::~DeleteDefine()
 void DeleteDefine::on_pushButton_clicked()
 {
       int  row = ui->lineEdit->text().toInt();
-    //  QString name  = ui->tableView->model()->data(ui->tableView->model()->index(row,0)).toString();
-      //QString path = ui->tableView->model()->data(ui->tableView->model()->index(row,2)).toString();
-       QString  name = ui->lineEdit_name->text();
-       QString  path = ui->lineEdit_path->text();
+      QString name  = ui_Win->tableView->model()->data(ui_Win->tableView->model()->index(row,0)).toString();
+      QString path = ui_Win->tableView->model()->data(ui_Win->tableView->model()->index(row,2)).toString();
+       
 
        QFile file(path);
      if (file.open(QIODevice::ReadWrite | QIODevice::Text)) {
@@ -56,6 +56,6 @@ void DeleteDefine::on_pushButton_clicked()
 
        CDefineList obj;
        obj.setDefineList(path);
-
+       ui_Win->tableView->model()->removeRow(row-1);//  to  refresh the table in real-time 
 }
 
