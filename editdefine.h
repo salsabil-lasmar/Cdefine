@@ -12,13 +12,14 @@ class EditDefine : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditDefine(QWidget *parent = nullptr );
+    explicit EditDefine(QWidget *parent = nullptr , Ui::MainWindow *Win = nullptr);
     ~EditDefine();
 
 private slots:
     void on_pushButton_clicked();
 
 private:
+    Ui::MainWindow *Win;
     Ui::EditDefine *ui;
 };
 
