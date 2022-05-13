@@ -11,6 +11,7 @@ AddNewDefine::AddNewDefine(QWidget *parent ) :
     QDialog(parent),
     ui(new Ui::AddNewDefine)
 {
+    this->parent=parent;
     ui->setupUi(this);
    connect(ui->pushButton,SIGNAL(clicked),this,SLOT(on_pushButton_clicked()));
 
@@ -36,7 +37,7 @@ void AddNewDefine::on_pushButton_clicked()
 
       QStringList list =NewDefine.split('\n');
      for(  const auto &e : list ){
-      stream << e <<'\n';
+      stream << "   " << e <<'\n';
 
 
      }
@@ -45,7 +46,7 @@ void AddNewDefine::on_pushButton_clicked()
 
       file.close();
 
-  CDefineList obj;
-  obj.setDefineList(path);
+  this->close();
+  parent->loadData();
 }
 
