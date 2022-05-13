@@ -29,7 +29,7 @@ EditDefine::~EditDefine()
 
 void EditDefine::on_pushButton_clicked()
 {
-        int row=ui->lineEdit->text().toInt();
+        int row=ui_Win->tableView->selectionModel()->currentIndex().row();
         QString NewDefineName=ui->lineEdit_2->text();
 
         QString oldname= ui_Win->tableView->model()->data(ui_Win->tableView->model()->index(row,1)).toString();;
