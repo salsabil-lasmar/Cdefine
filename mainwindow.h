@@ -15,19 +15,19 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-     void table_view();
+    void loadData();
+    void EditDefine();
     ~MainWindow();
 
 private slots:
     void on_Add_pushButton_clicked();
-
-    void on_Delete_pushButton_clicked();
-
-    void on_Edit_pushButton_clicked();
+    void slotCustomMenuRequested(QPoint pos);
+    void SlotDeleteDefine();
+    void SlotEditDefine();
 
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *model;
-    QAbstractItemModel *model1 ;
+   
 };
 #endif // MAINWINDOW_H
